@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { Button } from "@/components/ui/button"
@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Phone, MapPin, Send, Linkedin, Github } from "lucide-react"
+import emailjs from "@emailjs/browser"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -27,6 +28,11 @@ export function Contact() {
     threshold: 0.1,
   })
 
+  // Initialiser EmailJS
+  useEffect(() => {
+    emailjs.init("YOUR_PUBLIC_KEY") // Remplacez par votre clé publique EmailJS
+  }, [])
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
@@ -38,11 +44,9 @@ export function Contact() {
     setSubmitStatus(null)
 
     try {
-      // Remplacez ces valeurs par vos propres identifiants EmailJS
-      // Vous devrez créer un compte sur emailjs.com et configurer un service et un template
-      const serviceId = "service_id" // À remplacer
-      const templateId = "template_id" // À remplacer
-      const publicKey = "public_key" // À remplacer
+      // Configuration EmailJS
+      const serviceId = "service_onosh97" // ID de service fourni
+      const templateId = "template_id" // À remplacer par votre ID de template
 
       // Préparation des données pour EmailJS
       const templateParams = {
@@ -53,11 +57,10 @@ export function Contact() {
         message: formData.message,
       }
 
-      // Simulation d'envoi d'email (à remplacer par l'appel réel à EmailJS)
-      // await emailjs.send(serviceId, templateId, templateParams, publicKey)
-
-      // Simulation d'un délai pour montrer le processus
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      if (formRef.current) {
+        // Envoi de l'email via EmailJS
+        await emailjs.sendForm(serviceId, templateId, formRef.current)
+      }
 
       setSubmitStatus({
         success: true,

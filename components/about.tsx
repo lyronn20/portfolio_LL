@@ -90,7 +90,7 @@ export function About() {
               </div>
             </div>
 
-            <a href="/cv-lyronn-langlois.pdf" download="CV_Lyronn_Langlois.pdf">
+            <a href="/CV-LangloisLyronn.pdf" download="CV-LangloisLyronn.pdf">
               <Button className="gap-2 bg-cyan-600 hover:bg-cyan-700 text-white">
                 <Download className="h-4 w-4" />
                 Télécharger mon CV

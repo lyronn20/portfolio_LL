@@ -28,9 +28,9 @@ export function Contact() {
     threshold: 0.1,
   })
 
-  // Initialiser EmailJS
+  // Initialiser EmailJS (à faire une seule fois au chargement)
   useEffect(() => {
-    emailjs.init("YOUR_PUBLIC_KEY") // Remplacez par votre clé publique EmailJS
+    // Pas besoin d'initialiser avec init() pour la version récente d'EmailJS
   }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -44,23 +44,21 @@ export function Contact() {
     setSubmitStatus(null)
 
     try {
-      // Configuration EmailJS
-      const serviceId = "service_onosh97" // ID de service fourni
-      const templateId = "template_id" // À remplacer par votre ID de template
+      // Configuration EmailJS avec vos identifiants exacts
+      const serviceId = "service_onosh97" // ID de service confirmé
+      const templateId = "template_3naw71b" // ID de template confirmé
+      const publicKey = "o2WU_1HUVXw9Ekj--" // Remplacez par votre clé publique
 
-      // Préparation des données pour EmailJS
+      // Préparation des données selon le format de votre template
       const templateParams = {
-        to_email: "lyronn.langlois@supinfo.com",
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
+        name: formData.name,
+        email: formData.email,
+        title: formData.subject,
         message: formData.message,
       }
 
-      if (formRef.current) {
-        // Envoi de l'email via EmailJS
-        await emailjs.sendForm(serviceId, templateId, formRef.current)
-      }
+      // Envoi de l'email via EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
 
       setSubmitStatus({
         success: true,

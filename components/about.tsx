@@ -90,12 +90,18 @@ export function About() {
               </div>
             </div>
 
-            <a href="/CV-LangloisLyronn.pdf" download="CV-LangloisLyronn.pdf">
-              <Button className="gap-2 bg-cyan-600 hover:bg-cyan-700 text-white">
-                <Download className="h-4 w-4" />
-                Télécharger mon CV
-              </Button>
-            </a>
+            <Button
+              className="gap-2 bg-cyan-600 hover:bg-cyan-700 text-white"
+              onClick={() =>
+                window.open(
+                  "https://drive.google.com/file/d/196MMt8FFoaQRNpyLNMHElHzuUsy3DcE-/view?usp=sharing",
+                  "_blank",
+                )
+              }
+            >
+              <Download className="h-4 w-4" />
+              Télécharger mon CV
+            </Button>
           </motion.div>
         </div>
       </div>

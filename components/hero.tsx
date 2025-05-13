@@ -51,7 +51,7 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               size="lg"
-              className="px-8 bg-cyan-600 hover:bg-cyan-700 text-white"
+              className="px-8 bg-cyan-600 hover:bg-cyan-700 text-white w-full sm:w-auto"
               onClick={() => scrollToSection("projects")}
             >
               Voir mes projets
@@ -59,7 +59,7 @@ export function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="px-8 border-cyan-600 text-cyan-400 hover:bg-cyan-950"
+              className="px-8 border-cyan-600 text-cyan-400 hover:bg-cyan-950 w-full sm:w-auto"
               onClick={() => scrollToSection("contact")}
             >
               Me contacter

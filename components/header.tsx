@@ -37,8 +37,6 @@ export function Header() {
           <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
             L<span className="text-cyan-400">.</span>L
           </div>
-          <div className="h-6 w-px mx-3 bg-gradient-to-b from-cyan-400/20 to-blue-600/20"></div>
-          <span className="text-lg font-medium text-gray-200">Portfolio</span>
         </Link>
 
         <div className="hidden md:flex items-center space-x-8">

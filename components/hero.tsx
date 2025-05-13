@@ -14,8 +14,8 @@ export function Hero() {
 
   if (!mounted) return null
 
-  const scrollToAbout = () => {
-    const element = document.getElementById("about")
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
     }
@@ -49,10 +49,19 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="px-8 bg-cyan-600 hover:bg-cyan-700 text-white">
+            <Button
+              size="lg"
+              className="px-8 bg-cyan-600 hover:bg-cyan-700 text-white"
+              onClick={() => scrollToSection("projects")}
+            >
               Voir mes projets
             </Button>
-            <Button size="lg" variant="outline" className="px-8 border-cyan-600 text-cyan-400 hover:bg-cyan-950">
+            <Button
+              size="lg"
+              variant="outline"
+              className="px-8 border-cyan-600 text-cyan-400 hover:bg-cyan-950"
+              onClick={() => scrollToSection("contact")}
+            >
               Me contacter
             </Button>
           </div>
@@ -60,7 +69,13 @@ export function Hero() {
       </div>
 
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <Button variant="ghost" size="icon" onClick={scrollToAbout} aria-label="Scroll down" className="text-cyan-400">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => scrollToSection("about")}
+          aria-label="Scroll down"
+          className="text-cyan-400"
+        >
           <ArrowDown className="h-6 w-6" />
         </Button>
       </div>

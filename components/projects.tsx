@@ -6,7 +6,6 @@ import { useInView } from "react-intersection-observer"
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Github } from "lucide-react"
 
 type Project = {
   id: number
@@ -15,7 +14,6 @@ type Project = {
   image: string
   category: string
   technologies: string[]
-  githubUrl: string
 }
 
 const projects: Project[] = [
@@ -27,7 +25,6 @@ const projects: Project[] = [
     image: "/images/project-inventory.png",
     category: "Application",
     technologies: ["Java", "JavaFX", "SQL", "UML"],
-    githubUrl: "https://github.com/lyronn20",
   },
   {
     id: 2,
@@ -37,7 +34,6 @@ const projects: Project[] = [
     image: "/images/project-tournament.png",
     category: "Web",
     technologies: ["PHP 8.3", "Symfony", "SQL", "Twig", "WampServer"],
-    githubUrl: "https://github.com/lyronn20",
   },
   {
     id: 3,
@@ -47,7 +43,6 @@ const projects: Project[] = [
     image: "/images/project-starbattle.png",
     category: "Application",
     technologies: ["Python", "Algorithmes", "Structures de données"],
-    githubUrl: "https://github.com/lyronn20",
   },
   {
     id: 4,
@@ -57,7 +52,6 @@ const projects: Project[] = [
     image: "/images/project-papers.png",
     category: "Système",
     technologies: ["Linux", "Scripting", "Sécurité", "Réseau"],
-    githubUrl: "https://github.com/lyronn20",
   },
   {
     id: 5,
@@ -66,7 +60,6 @@ const projects: Project[] = [
     image: "/images/project-wordpress.png",
     category: "Web",
     technologies: ["WordPress", "PHP", "CSS"],
-    githubUrl: "https://github.com/lyronn20",
   },
   {
     id: 6,
@@ -76,7 +69,6 @@ const projects: Project[] = [
     image: "/images/project-railroad.png",
     category: "Design",
     technologies: ["UX/UI Design", "Responsive Design", "Prototypage", "User Research"],
-    githubUrl: "https://github.com/lyronn20",
   },
 ]
 
@@ -141,7 +133,7 @@ export function Projects() {
                     alt={project.title}
                     width={800}
                     height={600}
-                    className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+                    className="object-contain w-full h-full transition-transform duration-300 hover:scale-105 bg-white p-4"
                   />
                 </div>
                 <CardContent className="flex-1 flex flex-col p-6">
@@ -159,25 +151,6 @@ export function Projects() {
                         {tech}
                       </span>
                     ))}
-                  </div>
-
-                  <div className="flex gap-3 mt-auto">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      asChild
-                      className="border-cyan-700 text-cyan-400 hover:bg-cyan-900/30 w-full"
-                    >
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1"
-                      >
-                        <Github className="h-4 w-4" />
-                        Code
-                      </a>
-                    </Button>
                   </div>
                 </CardContent>
               </Card>
